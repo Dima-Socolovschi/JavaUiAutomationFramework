@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 
 public class TestRunner {
-    public static void main(String[] args) throws InterruptedException {
+    public static <StaleElementException extends Throwable> void main(String[] args) throws InterruptedException {
         DriverManager manager = DriverManager.getInstance();
         WebDriver driver = manager.getDriver();
 
@@ -56,6 +56,43 @@ public class TestRunner {
         submitButton.click();
 
         System.out.println("Current URL is: " + driver.getCurrentUrl());
+
+        Thread.sleep(300);
+
+        WebElement finishRegistration = driver.findElement(By.xpath("//div[@class='text-end']//a"));
+        finishRegistration.click();
+
+        System.out.println("Current URL is: " + driver.getCurrentUrl());
+
+        WebElement logoutButton = driver.findElement(By.xpath("//a[text() = 'Logout' and @class='list-group-item']"));
+        ScrollManager.scrollToElement(driver, logoutButton);
+        logoutButton.click();
+
+        Thread.sleep(300);
+
+        WebElement continueButton = driver.findElement(By.xpath("//a[text()='Continue']"));
+        continueButton.click();
+
+        System.out.println("Current URL is: " + driver.getCurrentUrl());
+
+        Thread.sleep(300);
+
+        myAccountDropdownList = driver.findElement(By.xpath("//span[text()='My Account']"));
+        myAccountDropdownList.click();
+
+        WebElement loginIntoAccount = driver.findElement(By.xpath("//a[text()='Login']"));
+        loginIntoAccount.click();
+
+        System.out.println("Current URL is: " + driver.getCurrentUrl());
+
+        WebElement loginEmail = driver.findElement(By.xpath("//input[@name = 'email']"));
+        loginEmail.sendKeys(fakeEmail);
+
+        WebElement loginPassword = driver.findElement(By.xpath("//input[@name = 'password']"));
+        loginPassword.sendKeys(fakePassword);
+
+        WebElement loginButton = driver.findElement(By.xpath("//button[@type = 'submit']"));
+        loginButton.click();
 
         driver.close();
 
