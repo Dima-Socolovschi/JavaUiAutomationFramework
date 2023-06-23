@@ -1,15 +1,11 @@
 package org.opencart;
 
 import org.opencart.managers.DriverManager;
-import org.opencart.managers.ScrollManager;
 import org.opencart.managers.FakeDataManager;
 import org.opencart.pageobjects.AccountCreatedPage;
 import org.opencart.pageobjects.HomePage;
 import org.opencart.pageobjects.RegisterPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WindowType;
 
 public class TestRunner {
     public static <StaleElementException extends Throwable> void main(String[] args) throws InterruptedException {
@@ -29,7 +25,7 @@ public class TestRunner {
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.fillTheRegisterForm(fakeName, fakeLastName, fakeEmail, fakePassword);
         registerPage.switchOnThePrivacyToggle(driver);
-        registerPage.clickOnContinueButton();
+        registerPage.clickOnContinueButton(driver);
 
         AccountCreatedPage accountCreatedPage = new AccountCreatedPage(driver);
         accountCreatedPage.clickLogoutButton(driver);
