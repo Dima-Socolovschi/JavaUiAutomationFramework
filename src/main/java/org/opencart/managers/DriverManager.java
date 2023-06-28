@@ -50,4 +50,11 @@ public class DriverManager {
         }
         return driver;
     }
+
+    public void quiteDriver(){
+        driver.quit();
+        driver = null;
+        instance = null;
+        System.out.println("Driver closed.");
+    }
 }

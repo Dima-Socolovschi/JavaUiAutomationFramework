@@ -23,5 +23,4 @@ public class AccountCreatedPage extends Page{
         Thread.sleep(500);
         logoutButton.click();
     }
-
 }
