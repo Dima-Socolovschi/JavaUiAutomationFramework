@@ -41,7 +41,7 @@ public class TestRegistrationFlowWithJunit {
 
     @Test
     @Order(1)
-    @Name("Register user test.")
+    @DisplayName("Register user test.")
     public void registerUserTest() throws InterruptedException {
         homePage.navigateToRegisterPage();
 
@@ -61,7 +61,7 @@ public class TestRegistrationFlowWithJunit {
 
     @Test
     @Order(2)
-    @Name("Register user test without privacy button.")
+    @DisplayName("Register user test without privacy button.")
     public void registerUserWithoutLastNameTest() throws InterruptedException {
         homePage.navigateToRegisterPage();
 
